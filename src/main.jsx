@@ -7,6 +7,7 @@ import MainLayout from "./layouts/MainLayout.jsx";
 import Home from "./components/Home.jsx";
 import AddCoffee from "./components/AddCoffee.jsx";
 import UpdateCoffee from "./components/UpdateCoffee.jsx";
+import CoffeeDetails from "./components/CoffeeDetails.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -14,6 +15,8 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
+        loader: () => fetch("http://localhost:3000/coffees"),
+        hydrateFallbackElement: <p>Loading..</p>,
         element: <Home></Home>,
       },
       {
@@ -21,7 +24,17 @@ const router = createBrowserRouter([
         element: <AddCoffee></AddCoffee>,
       },
       {
-        path: "update-coffee",
+        path: "/coffees/:id",
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/coffees/${params.id}`),
+        hydrateFallbackElement: <p>Loading....</p>,
+        element: <CoffeeDetails></CoffeeDetails>,
+      },
+      {
+        path: "/update-coffee/:id",
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/coffees/${params.id}`),
+        hydrateFallbackElement: <p>Loading....</p>,
         element: <UpdateCoffee></UpdateCoffee>,
       },
     ],

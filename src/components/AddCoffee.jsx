@@ -1,4 +1,5 @@
 import React from "react";
+import Swal from "sweetalert2";
 
 const AddCoffee = () => {
   const handleAddCoffee = (e) => {
@@ -6,7 +7,7 @@ const AddCoffee = () => {
     const form = e.target;
     const formData = new FormData(form);
     const newCoffee = Object.fromEntries(formData.entries());
-    console.log(newCoffee);
+    // console.log(newCoffee);
     // send to data to the db
     fetch("http://localhost:3000/coffees", {
       method: "POST",
@@ -17,7 +18,14 @@ const AddCoffee = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log("after adding coffee to db:",data);
+        if (data.insertedId) {
+          Swal.fire({
+            title: "Coffee Added Successfully.",
+            icon: "success",
+            draggable: true,
+          });
+          form.reset();
+        }
       });
   };
   return (
@@ -26,7 +34,7 @@ const AddCoffee = () => {
         <h1 className="text-6xl">Add Coffee</h1>
         <p className="text-lg text-gray-600 mt-4">
           Use the form below to add a new coffee to the collection. Fill in the
-          details like name, origin, taste, and image URL.
+          details like Name, Barista, Taste, Supplier, Price, Details and image URL.
         </p>
       </div>
 
@@ -69,12 +77,12 @@ const AddCoffee = () => {
             />
           </fieldset>
           <fieldset className="fieldset bg-base-200 border-base-300 rounded-box border p-4">
-            <label className="label">Category</label>
+            <label className="label">Price</label>
             <input
-              type="text"
-              name="category"
+              type="number"
+              name="price"
               className="input w-full"
-              placeholder="Enter Category"
+              placeholder="Price per cup"
             />
           </fieldset>
           <fieldset className="fieldset bg-base-200 border-base-300 rounded-box border p-4">
