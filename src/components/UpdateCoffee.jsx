@@ -11,7 +11,7 @@ const UpdateCoffee = () => {
     const form = e.target;
     const formData = new FormData(form);
     const updatedCoffee = Object.fromEntries(formData.entries());
-    console.log(updatedCoffee);
+    // console.log(updatedCoffee);
 
     // sent updated coffee to the db
     fetch(`http://localhost:3000/coffees/${_id}`, {
@@ -32,12 +32,13 @@ const UpdateCoffee = () => {
             timer: 1500,
           });
         }
+        
       });
   };
   return (
     <div className="p-24">
       <div className="text-center p-12 space-y-4">
-        <h1 className="text-6xl">Update Coffee</h1>
+        <h1 className="text-5xl">Update Coffee</h1>
       </div>
 
       <form onSubmit={handleUpdateCoffee}>
