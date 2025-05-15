@@ -11,6 +11,7 @@ import CoffeeDetails from "./components/CoffeeDetails.jsx";
 import SignIn from "./components/SignIn.jsx";
 import SignUp from "./components/SignUp.jsx";
 import AuthProvider from "./contexts/AuthProvider.jsx";
+import Users from "./components/Users.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -48,12 +49,20 @@ const router = createBrowserRouter([
         path: "/signup",
         element: <SignUp></SignUp>,
       },
+      {
+        path: "/users",
+        loader: () => fetch("http://localhost:3000/users"),
+        element: <Users></Users>,
+      },
     ],
   },
 ]);
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-   <AuthProvider> <RouterProvider router={router} /></AuthProvider>
+    <AuthProvider>
+      {" "}
+      <RouterProvider router={router} />
+    </AuthProvider>
   </StrictMode>
 );
