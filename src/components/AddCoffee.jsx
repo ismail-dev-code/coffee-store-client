@@ -9,7 +9,7 @@ const AddCoffee = () => {
     const newCoffee = Object.fromEntries(formData.entries());
     // console.log(newCoffee);
     // send to data to the db
-    fetch("http://localhost:3000/coffees", {
+    fetch("https://coffee-server-silk.vercel.app/coffees", {
       method: "POST",
       headers: {
         "content-type": "application/json",

@@ -27,7 +27,7 @@ const SignUp = () => {
         lastSignInTime: result.user?.metadata?.lastSignInTime,
       };
       //   save profile info in the db
-      fetch("http://localhost:3000/users", {
+      fetch("https://coffee-server-silk.vercel.app/users", {
         method: "POST",
         headers: {
           "content-type": "application/json",

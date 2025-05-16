@@ -19,7 +19,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        loader: () => fetch("http://localhost:3000/coffees"),
+        loader: () => fetch("https://coffee-server-silk.vercel.app/coffees"),
         hydrateFallbackElement: <p>Loading..</p>,
         element: <Home></Home>,
       },
@@ -30,15 +30,15 @@ const router = createBrowserRouter([
       {
         path: "/coffees/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/coffees/${params.id}`),
+          fetch(`https://coffee-server-silk.vercel.app/coffees/${params.id}`),
         hydrateFallbackElement: <p>Loading....</p>,
         element: <CoffeeDetails></CoffeeDetails>,
       },
       {
         path: "/update-coffee/:id",
-        loader: ({ params }) =>
-          fetch(`http://localhost:3000/coffees/${params.id}`),
         hydrateFallbackElement: <p>Loading....</p>,
+        loader: ({ params }) =>
+        fetch(`https://coffee-server-silk.vercel.app/coffees/${params.id}`),
         element: <UpdateCoffee></UpdateCoffee>,
       },
       {
@@ -51,7 +51,8 @@ const router = createBrowserRouter([
       },
       {
         path: "/users",
-        loader: () => fetch("http://localhost:3000/users"),
+        hydrateFallbackElement: <p>Loading....</p>,
+        loader: () => fetch("https://coffee-server-silk.vercel.app/users"),
         element: <Users></Users>,
       },
     ],
