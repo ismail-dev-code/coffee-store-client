@@ -1,4 +1,7 @@
 import { useState } from "react";
+import { CiEdit } from "react-icons/ci";
+import { FaEye } from "react-icons/fa";
+import { MdDelete } from "react-icons/md";
 import { useLoaderData } from "react-router";
 import Swal from "sweetalert2";
 
@@ -44,7 +47,7 @@ const Users = () => {
             <th>No</th>
             <th>Name</th>
             <th>Phone</th>
-            <th>AC Creation Time</th>
+            <th>Account Creation Time</th>
             <th></th>
           </tr>
         </thead>
@@ -71,13 +74,13 @@ const Users = () => {
               <td>{user.phone}</td>
               <td>{user.creationTime}</td>
               <th className="space-x-2">
-                <button className="btn btn-xs">V</button>
-                <button className="btn btn-xs">E</button>
+                <button className="btn btn-xs"><FaEye size={20} className="text-orange-400" /></button>
+                <button className="btn btn-xs"><CiEdit size={20} className="text-orange-400" /></button>
                 <button
                   onClick={() => handleDelete(user._id)}
                   className="btn btn-xs"
                 >
-                  X
+                  <MdDelete size={20} className="text-orange-400" />
                 </button>
               </th>
             </tr>

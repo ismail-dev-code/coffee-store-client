@@ -5,6 +5,7 @@ import CoffeesCard from "./CoffeesCard";
 const Home = () => {
   const initialCoffees = useLoaderData();
   const [coffees, setCoffees] = useState(initialCoffees);
+ 
   return (
     <div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

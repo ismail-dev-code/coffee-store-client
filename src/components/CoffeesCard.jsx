@@ -1,4 +1,7 @@
 import React from "react";
+import { CiEdit } from "react-icons/ci";
+import { FaEye } from "react-icons/fa";
+import { MdDelete } from "react-icons/md";
 import { Link } from "react-router";
 import Swal from "sweetalert2";
 
@@ -55,13 +58,13 @@ const CoffeesCard = ({ coffee, coffees, setCoffees }) => {
 
         <div className="join join-vertical space-y-2">
           <Link to={`/coffees/${_id}`}>
-            <button className="btn join-item">View</button>
+            <button className="btn join-item"><FaEye size={30} className="text-orange-400" /></button>
           </Link>
           <Link to={`/update-coffee/${_id}`}>
-            <button className="btn join-item">Edit</button>
+            <button className="btn join-item"><CiEdit size={30} className="text-orange-400" /></button>
           </Link>
           <button onClick={() => handleDelete(_id)} className="btn join-item">
-            X
+            <MdDelete size={30} className="text-orange-400" />
           </button>
         </div>
       </div>
